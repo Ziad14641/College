@@ -3,32 +3,300 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ملفات الكلية</title>
+<title>ملفات الكلية | BIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f4ef;--card:#fff;--tx:#1f2430;--mu:#6b7280;--ac:#2f6f5e;--bd:#e3dfd6}
-@media (prefers-color-scheme:dark){:root{--bg:#15181c;--card:#1f2328;--tx:#eceff3;--mu:#9aa3ad;--ac:#5fb59f;--bd:#2f353c}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.6}
-main{max-width:720px;margin:0 auto;padding:20px 16px 40px}
-h1{font-size:1.5rem;margin:0 0 4px}
-.sub{color:var(--mu);margin:0 0 18px}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:12px}
-.tab{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:7px 14px;border-radius:20px;cursor:pointer;white-space:nowrap;font:inherit}
-.tab.on{background:var(--ac);color:#fff;border-color:var(--ac)}
-.box{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:6px 14px}
-.f{display:block;padding:11px 0;border-bottom:1px solid var(--bd);color:var(--ac);text-decoration:none;font-weight:600;word-break:break-word}
-.f:last-child{border:0}
-.f small{display:block;color:var(--mu);font-weight:400}
-.empty{color:var(--mu);text-align:center;padding:16px}
+:root {
+  --bg: #f3f6fb;
+  --card: #ffffff;
+  --tx: #14213d;
+  --mu: #5c6b8a;
+  --ac: #1b365d;
+  --ac-light: #e6eef8;
+  --ac-hover: #122542;
+  --bd: #dce4f0;
+  --shadow: 0 4px 20px -2px rgba(20, 33, 61, 0.06);
+  --shadow-hover: 0 10px 25px -5px rgba(27, 54, 93, 0.16);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1320;
+    --card: #132035;
+    --tx: #f1f5f9;
+    --mu: #94a3b8;
+    --ac: #60a5fa;
+    --ac-light: rgba(96, 165, 250, 0.14);
+    --ac-hover: #93c5fd;
+    --bd: #223554;
+    --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+    --shadow-hover: 0 10px 25px -5px rgba(96, 165, 250, 0.2);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.hero {
+  background: linear-gradient(135deg, #0f2342 0%, #1b365d 55%, #24477a 100%);
+  color: #fff;
+  padding: 36px 20px 48px;
+  text-align: center;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  box-shadow: 0 10px 30px -10px rgba(15, 35, 66, 0.45);
+}
+
+.hero h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.hero p {
+  font-size: 0.98rem;
+  opacity: 0.92;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+main {
+  max-width: 820px;
+  margin: -26px auto 0;
+  padding: 0 16px 50px;
+}
+
+.search-wrap {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 46px 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--bd);
+  background: var(--card);
+  color: var(--tx);
+  font-family: inherit;
+  font-size: 0.98rem;
+  box-shadow: var(--shadow);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--ac);
+  box-shadow: 0 0 0 3px rgba(27, 54, 93, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--mu);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 12px;
+  margin-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  border: 1px solid var(--bd);
+  background: var(--card);
+  color: var(--tx);
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.tab:hover {
+  border-color: var(--ac);
+  transform: translateY(-1px);
+}
+
+.tab.on {
+  background: var(--ac);
+  color: #fff;
+  border-color: var(--ac);
+  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tab.on { color: #0b1320; }
+}
+
+.meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding: 0 4px;
+  font-size: 0.88rem;
+  color: var(--mu);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--tx);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--ac);
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.pdf-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--ac-light);
+  color: var(--ac);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.card-info {
+  min-width: 0;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--tx);
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 8px;
+  background: var(--ac-light);
+  color: var(--ac);
+}
+
+.open-btn {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ac);
+  background: var(--ac-light);
+  padding: 6px 12px;
+  border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.card:hover .open-btn {
+  background: var(--ac);
+  color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card:hover .open-btn { color: #0b1320; }
+}
+
+.empty {
+  grid-column: 1 / -1;
+  background: var(--card);
+  border: 1px dashed var(--bd);
+  border-radius: 16px;
+  padding: 36px 16px;
+  text-align: center;
+  color: var(--mu);
+  font-weight: 600;
+}
+
+footer {
+  text-align: center;
+  color: var(--mu);
+  font-size: 0.85rem;
+  margin-top: 36px;
+}
 </style>
 </head>
 <body>
+
+<header class="hero">
+  <h1>📚 مكتبة ملفات الكلية</h1>
+  <p>جميع المحاضرات والملخصات وبنوك الأسئلة منظمة في مكان واحد</p>
+</header>
+
 <main>
-<h1>📚 ملفات الكلية</h1>
-<p class="sub">المحاضرات والملخصات والامتحانات في مكان واحد</p>
-<div class="tabs" id="tabs"></div>
-<div class="box" id="list"></div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" class="search-input" placeholder="ابحث باسم المحاضرة أو الشابتر أو المادة...">
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="meta-bar">
+    <span id="current-label">القسم: الكل</span>
+    <span id="count-label">0 ملف</span>
+  </div>
+
+  <div class="grid" id="list"></div>
+
+  <footer>بالتوفيق والنجاح الدائم 🎓</footer>
 </main>
+
 <script>
 var FILES = [
   { subject: "مبادئ المحاسبة", title: "Lecture 1", file: "lec1 10-6-2026.pdf" },
@@ -49,28 +317,71 @@ var FILES = [
   { subject: "مبادئ إدارة الأعمال", title: "Chapter 3: The Nature and Goal of Planning", file: "Business4--.pdf" },
   { subject: "مبادئ إدارة الأعمال", title: "Chapter 4: The Elements and Purposes of Organizing", file: "Business5.pdf" }
 ];
+
 var cur = "الكل";
+var query = "";
+
+document.getElementById("search").addEventListener("input", function (e) {
+  query = e.target.value.trim().toLowerCase();
+  render();
+});
+
 function render() {
   var subs = [];
-  FILES.forEach(function (f) { if (subs.indexOf(f.subject) < 0) subs.push(f.subject); });
-  var t = document.getElementById("tabs"); t.textContent = "";
+  FILES.forEach(function (f) {
+    if (subs.indexOf(f.subject) < 0) subs.push(f.subject);
+  });
+
+  var t = document.getElementById("tabs");
+  t.textContent = "";
   ["الكل"].concat(subs).forEach(function (s) {
     var b = document.createElement("button");
-    b.className = "tab" + (s === cur ? " on" : ""); b.textContent = s;
+    b.className = "tab" + (s === cur ? " on" : "");
+    b.textContent = s;
     b.onclick = function () { cur = s; render(); };
     t.appendChild(b);
   });
-  var l = document.getElementById("list"); l.textContent = "";
-  var show = FILES.filter(function (f) { return cur === "الكل" || f.subject === cur; });
-  if (!show.length) { l.innerHTML = '<div class="empty">مفيش ملفات لسه</div>'; return; }
+
+  var show = FILES.filter(function (f) {
+    var matchSub = (cur === "الكل" || f.subject === cur);
+    var matchQuery = !query ||
+      f.title.toLowerCase().indexOf(query) > -1 ||
+      f.subject.toLowerCase().indexOf(query) > -1;
+    return matchSub && matchQuery;
+  });
+
+  document.getElementById("current-label").textContent = "القسم: " + cur;
+  document.getElementById("count-label").textContent = show.length + (show.length === 1 || show.length > 10 ? " ملف" : " ملفات");
+
+  var l = document.getElementById("list");
+  l.textContent = "";
+
+  if (!show.length) {
+    l.innerHTML = '<div class="empty">لا توجد ملفات مطابقة لبحثك حالياً 😕</div>';
+    return;
+  }
+
   show.forEach(function (f) {
-    var a = document.createElement("a"); a.className = "f";
-    a.href = f.file; a.target = "_blank"; a.rel = "noopener";
-    a.textContent = "📄 " + f.title;
-    var s = document.createElement("small"); s.textContent = f.subject; a.appendChild(s);
+    var a = document.createElement("a");
+    a.className = "card";
+    a.href = f.file;
+    a.target = "_blank";
+    a.rel = "noopener";
+
+    a.innerHTML =
+      '<div class="card-left">' +
+        '<div class="pdf-icon">PDF</div>' +
+        '<div class="card-info">' +
+          '<div class="card-title">' + f.title + '</div>' +
+          '<span class="badge">' + f.subject + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<span class="open-btn">فتح ↗</span>';
+
     l.appendChild(a);
   });
 }
+
 render();
 </script>
 </body>
