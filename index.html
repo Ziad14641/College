@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ملفات الكلية</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--tx:#1f2430;--mu:#6b7280;--ac:#2f6f5e;--bd:#e3dfd6}
+@media (prefers-color-scheme:dark){:root{--bg:#15181c;--card:#1f2328;--tx:#eceff3;--mu:#9aa3ad;--ac:#5fb59f;--bd:#2f353c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.6}
+main{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.5rem;margin:0 0 4px}
+.sub{color:var(--mu);margin:0 0 18px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:12px}
+.tab{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:7px 14px;border-radius:20px;cursor:pointer;white-space:nowrap;font:inherit}
+.tab.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:6px 14px}
+.f{display:block;padding:11px 0;border-bottom:1px solid var(--bd);color:var(--ac);text-decoration:none;font-weight:600;word-break:break-word}
+.f:last-child{border:0}
+.f small{display:block;color:var(--mu);font-weight:400}
+.empty{color:var(--mu);text-align:center;padding:16px}
+</style>
+</head>
+<body>
+<main>
+<h1>📚 ملفات الكلية</h1>
+<p class="sub">المحاضرات والملخصات والامتحانات في مكان واحد</p>
+<div class="tabs" id="tabs"></div>
+<div class="box" id="list"></div>
+</main>
+<script>
+var FILES = [
+  { subject: "مثال: تشريح", title: "محاضرة 1", file: "files/lecture1.pdf" }
+];
+var cur = "الكل";
+function render() {
+  var subs = [];
+  FILES.forEach(function (f) { if (subs.indexOf(f.subject) < 0) subs.push(f.subject); });
+  var t = document.getElementById("tabs"); t.textContent = "";
+  ["الكل"].concat(subs).forEach(function (s) {
+    var b = document.createElement("button");
+    b.className = "tab" + (s === cur ? " on" : ""); b.textContent = s;
+    b.onclick = function () { cur = s; render(); };
+    t.appendChild(b);
+  });
+  var l = document.getElementById("list"); l.textContent = "";
+  var show = FILES.filter(function (f) { return cur === "الكل" || f.subject === cur; });
+  if (!show.length) { l.innerHTML = '<div class="empty">مفيش ملفات لسه</div>'; return; }
+  show.forEach(function (f) {
+    var a = document.createElement("a"); a.className = "f";
+    a.href = f.file; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = "📄 " + f.title;
+    var s = document.createElement("small"); s.textContent = f.subject; a.appendChild(s);
+    l.appendChild(a);
+  });
+}
+render();
+</script>
+</body>
+</html>
