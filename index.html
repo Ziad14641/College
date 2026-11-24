@@ -3,44 +3,48 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ملفات الكلية | BIS</title>
+<title>مساحة مذاكرة BIS | ملفات الكلية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f3f6fb;
+  --bg: #f1f5fb;
   --card: #ffffff;
-  --tx: #14213d;
-  --mu: #5c6b8a;
+  --tx: #101e36;
+  --mu: #586987;
   --ac: #1b365d;
-  --ac-light: #e6eef8;
-  --ac-hover: #122542;
-  --bd: #dce4f0;
+  --ac-2: #2b548e;
+  --ac-light: #e5eef9;
+  --bd: #d7e2f0;
   --ok: #0f766e;
   --ok-bg: rgba(15, 118, 110, 0.12);
   --star: #d97706;
-  --star-bg: rgba(217, 119, 6, 0.12);
-  --shadow: 0 4px 20px -2px rgba(20, 33, 61, 0.06);
-  --shadow-hover: 0 10px 25px -5px rgba(27, 54, 93, 0.16);
+  --star-bg: rgba(217, 119, 6, 0.13);
+  --note: #1d4ed8;
+  --note-bg: rgba(29, 78, 216, 0.11);
+  --shadow: 0 6px 24px -4px rgba(16, 30, 54, 0.07);
+  --shadow-hover: 0 14px 30px -8px rgba(27, 54, 93, 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b1320;
-    --card: #132035;
+    --bg: #080f1c;
+    --card: #101c30;
     --tx: #f1f5f9;
     --mu: #94a3b8;
     --ac: #60a5fa;
+    --ac-2: #3b82f6;
     --ac-light: rgba(96, 165, 250, 0.14);
-    --ac-hover: #93c5fd;
-    --bd: #223554;
+    --bd: #1e3152;
     --ok: #2dd4bf;
     --ok-bg: rgba(45, 212, 191, 0.14);
     --star: #fbbf24;
-    --star-bg: rgba(251, 191, 36, 0.14);
-    --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
-    --shadow-hover: 0 10px 25px -5px rgba(96, 165, 250, 0.2);
+    --star-bg: rgba(251, 191, 36, 0.15);
+    --note: #93c5fd;
+    --note-bg: rgba(147, 197, 253, 0.14);
+    --shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.42);
+    --shadow-hover: 0 14px 30px -8px rgba(59, 130, 246, 0.24);
   }
 }
 
@@ -50,64 +54,151 @@ body {
   background: var(--bg);
   color: var(--tx);
   font-family: 'Cairo', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
+  line-height: 1.65;
   min-height: 100vh;
 }
 
 .hero {
-  background: linear-gradient(135deg, #0f2342 0%, #1b365d 55%, #24477a 100%);
+  background:
+    radial-gradient(circle at 85% 15%, rgba(96, 165, 250, 0.22), transparent 45%),
+    linear-gradient(135deg, #091830 0%, #162d50 55%, #1f4070 100%);
   color: #fff;
-  padding: 34px 20px 48px;
-  text-align: center;
-  border-bottom-left-radius: 28px;
-  border-bottom-right-radius: 28px;
-  box-shadow: 0 10px 30px -10px rgba(15, 35, 66, 0.45);
+  padding: 34px 20px 56px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 12px 32px -12px rgba(9, 24, 48, 0.55);
+}
+
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.greeting-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
 .hero h1 {
-  font-size: 1.85rem;
+  font-size: 1.9rem;
   font-weight: 800;
   margin-bottom: 6px;
 }
 
 .hero p {
   font-size: 0.96rem;
-  opacity: 0.92;
-  max-width: 540px;
-  margin: 0 auto 14px;
+  opacity: 0.9;
+  max-width: 620px;
+  margin-bottom: 16px;
+}
+
+.hero-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stat-chip {
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
 .share-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  color: #fff;
+  background: #ffffff;
+  color: #0f2342;
+  border: none;
   padding: 8px 16px;
-  border-radius: 999px;
+  border-radius: 12px;
   font-family: inherit;
-  font-size: 0.86rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: transform 0.18s, box-shadow 0.18s;
 }
 
 .share-btn:hover {
-  background: rgba(255, 255, 255, 0.24);
   transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 main {
-  max-width: 860px;
-  margin: -26px auto 0;
-  padding: 0 16px 56px;
+  max-width: 900px;
+  margin: -30px auto 0;
+  padding: 0 16px 60px;
+}
+
+.resume-banner {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-right: 5px solid var(--ac-2);
+  border-radius: 18px;
+  padding: 13px 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+}
+
+.resume-banner.show { display: flex; }
+
+.resume-text small {
+  display: block;
+  color: var(--mu);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.resume-text strong {
+  font-size: 0.96rem;
+  color: var(--tx);
+}
+
+.resume-btn {
+  background: var(--ac);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+  .resume-btn { color: #080f1c; }
 }
 
 .controls-top {
   display: flex;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   flex-wrap: wrap;
 }
 
@@ -124,7 +215,7 @@ main {
   background: var(--card);
   color: var(--tx);
   font-family: inherit;
-  font-size: 0.96rem;
+  font-size: 0.95rem;
   box-shadow: var(--shadow);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -132,7 +223,7 @@ main {
 
 .search-input:focus {
   border-color: var(--ac);
-  box-shadow: 0 0 0 3px rgba(27, 54, 93, 0.15);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
 }
 
 .search-icon {
@@ -169,7 +260,7 @@ main {
   background: var(--card);
   color: var(--tx);
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   box-shadow: var(--shadow);
   outline: none;
@@ -211,4 +302,842 @@ main {
   background: var(--ac);
   color: #fff;
   border-color: var(--ac);
-  box-shadow: 0 4px 
+  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tab.on { color: #080f1c; }
+}
+
+.progress-box {
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+  padding: 13px 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.86rem;
+  color: var(--mu);
+  font-weight: 700;
+  margin-bottom: 8px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.progress-track {
+  width: 100%;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--ac-light);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--ac), var(--ok));
+  border-radius: 999px;
+  transition: width 0.35s ease;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+  padding: 15px 16px;
+  color: var(--tx);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--ac);
+}
+
+.card.done {
+  border-right: 4px solid var(--ok);
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.subj-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: var(--ac-light);
+  color: var(--ac);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 0.96rem;
+  color: var(--tx);
+  margin-bottom: 5px;
+  word-break: break-word;
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 8px;
+  background: var(--ac-light);
+  color: var(--ac);
+}
+
+.badge.done-tag {
+  background: var(--ok-bg);
+  color: var(--ok);
+}
+
+.badge.note-tag {
+  background: var(--note-bg);
+  color: var(--note);
+}
+
+.note-preview {
+  font-size: 0.8rem;
+  color: var(--mu);
+  background: var(--bg);
+  border: 1px dashed var(--bd);
+  border-radius: 10px;
+  padding: 6px 10px;
+  word-break: break-word;
+}
+
+.icon-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--bd);
+  background: transparent;
+  color: var(--mu);
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+}
+
+.icon-btn:hover {
+  border-color: var(--ac);
+  color: var(--tx);
+}
+
+.icon-btn.fav.on {
+  background: var(--star-bg);
+  border-color: var(--star);
+  color: var(--star);
+}
+
+.icon-btn.chk.on {
+  background: var(--ok-bg);
+  border-color: var(--ok);
+  color: var(--ok);
+}
+
+.icon-btn.nt.on {
+  background: var(--note-bg);
+  border-color: var(--note);
+  color: var(--note);
+}
+
+.card-foot {
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--bd);
+}
+
+.act-btn {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
+}
+
+.act-btn.preview {
+  background: var(--ac);
+  color: #fff;
+}
+
+.act-btn.preview:hover {
+  background: var(--ac-2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .act-btn.preview { color: #080f1c; }
+}
+
+.act-btn.ext {
+  background: var(--ac-light);
+  color: var(--ac);
+  border-color: var(--bd);
+}
+
+.act-btn.ext:hover {
+  border-color: var(--ac);
+}
+
+.empty {
+  grid-column: 1 / -1;
+  background: var(--card);
+  border: 1px dashed var(--bd);
+  border-radius: 18px;
+  padding: 36px 16px;
+  text-align: center;
+  color: var(--mu);
+  font-weight: 700;
+}
+
+/* Modal Preview */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 13, 24, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 999;
+}
+
+.modal.open { display: flex; }
+
+.modal-box {
+  width: 100%;
+  max-width: 940px;
+  height: 86vh;
+  background: var(--card);
+  border: 1px solid var(--bd);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--bd);
+  flex-wrap: wrap;
+}
+
+.modal-title {
+  font-weight: 800;
+  font-size: 0.96rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.m-btn {
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--bd);
+  background: var(--ac-light);
+  color: var(--ac);
+  cursor: pointer;
+}
+
+.m-btn.close {
+  background: #dc2626;
+  color: #fff;
+  border-color: #dc2626;
+}
+
+.modal-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #1e293b;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--tx);
+  color: var(--bg);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 1200;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+footer {
+  text-align: center;
+  color: var(--mu);
+  font-size: 0.85rem;
+  margin-top: 38px;
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="greeting-pill" id="greetingPill">✨ مساحة مذاكرتك</div>
+    <h1>📚 مكتبة ملفات الكلية</h1>
+    <p>منظمة على موادك ومحاضراتك عشان تلاقي اللي محتاجه بسرعة وتتابع مذاكرتك خطوة بخطوة.</p>
+    <div class="hero-bar">
+      <div class="stats-row" id="statsRow"></div>
+      <button type="button" class="share-btn" id="shareBtn">🔗 مشاركة رابط المكتبة</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="resume-banner" id="resumeBanner">
+    <div class="resume-text">
+      <small>🕒 آخر ملف فتحته أو تفاعلت معاه</small>
+      <strong id="resumeTitle">—</strong>
+    </div>
+    <button type="button" class="resume-btn" id="resumeBtn">كمل من هنا ↩</button>
+  </div>
+
+  <div class="controls-top">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search" class="search-input" placeholder="ابحث باسم الشابتر أو المحاضرة أو المادة... (دوس / للبحث السريع)">
+      <button type="button" class="clear-btn" id="clearSearch" title="مسح البحث">✕</button>
+    </div>
+    <select id="sortSelect" class="sort-select" aria-label="ترتيب الملفات">
+      <option value="default">الترتيب: الأساسي</option>
+      <option value="title">الترتيب: أبجدي</option>
+      <option value="undone">غير المذاكر أولاً</option>
+    </select>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="progress-box">
+    <div class="meta-bar">
+      <span id="current-label">القسم: الكل</span>
+      <span id="progress-text">تمت مذاكرته: 0 من 0 (0%)</span>
+      <span id="count-label">0 ملف</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <div class="grid" id="list"></div>
+
+  <footer>بالتوفيق والنجاح في كل موادك 🎓</footer>
+</main>
+
+<div class="modal" id="pdfModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle">معاينة الملف</div>
+      <div class="modal-actions">
+        <a id="modalNewTab" href="#" target="_blank" rel="noopener" class="m-btn">فتح في تبويب جديد ↗</a>
+        <a id="modalDownload" href="#" download class="m-btn">تحميل ⬇</a>
+        <button type="button" class="m-btn close" id="modalClose">إغلاق ✕</button>
+      </div>
+    </div>
+    <iframe id="pdfFrame" class="modal-frame" title="معاينة PDF"></iframe>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var FILES = [
+  { subject: "مبادئ المحاسبة", title: "Lecture 1", file: "lec1 10-6-2026.pdf" },
+  { subject: "مبادئ المحاسبة", title: "Lecture 2: Accounting Categories", file: "lec 2 Chapter2.pdf" },
+  { subject: "مبادئ المحاسبة", title: "Lecture 3: Accounting Categories", file: "lec3 - last updated.pdf" },
+  { subject: "مبادئ المحاسبة", title: "Lecture 4 (Part 1): Daily Steps", file: "chapter 4 part 1 lec 4.pdf" },
+  { subject: "مبادئ المحاسبة", title: "Lecture 6", file: "lec 6.pdf" },
+  { subject: "مبادئ المحاسبة", title: "Lecture 7", file: "LEC7.pdf" },
+  { subject: "مبادئ الاقتصاد", title: "Chapter 1: Question Bank", file: "Principles_of_Economics_Chapter_1_Questions_By_T.pdf" },
+  { subject: "مبادئ الاقتصاد", title: "Chapter 2: Economic Systems", file: "Ch2 Economic systems.pdf" },
+  { subject: "مبادئ الاقتصاد", title: "Chapter 3: Demand Side", file: "Ch3 Demand.pdf" },
+  { subject: "مبادئ الاقتصاد", title: "Chapter 4: Supply Side", file: "supply side Ch4.pdf" },
+  { subject: "مبادئ الاقتصاد", title: "Chapter 5: Market Equilibrium", file: "market equilibrium ch 5.pdf" },
+  { subject: "مبادئ الاقتصاد", title: "Chapter 6: Price Elasticity of Demand", file: "Elasticity Ch6.pdf" },
+  { subject: "مبادئ إدارة الأعمال", title: "Chapter 1: Fundamentals of Management (Part 1)", file: "Business1.pdf" },
+  { subject: "مبادئ إدارة الأعمال", title: "Chapter 1: Fundamentals of Management (Part 2)", file: "Business2.pdf" },
+  { subject: "مبادئ إدارة الأعمال", title: "Chapter 2: The Evolution of Management Thought", file: "Business3.pdf" },
+  { subject: "مبادئ إدارة الأعمال", title: "Chapter 3: The Nature and Goal of Planning", file: "Business4--.pdf" },
+  { subject: "مبادئ إدارة الأعمال", title: "Chapter 4: The Elements and Purposes of Organizing", file: "Business5.pdf" }
+];
+
+var STORAGE_FAV = "bis_lib_favs_v2";
+var STORAGE_DONE = "bis_lib_done_v2";
+var STORAGE_NOTES = "bis_lib_notes_v2";
+var STORAGE_LAST = "bis_lib_last_v2";
+
+var favs = loadArr(STORAGE_FAV);
+var done = loadArr(STORAGE_DONE);
+var notes = loadObj(STORAGE_NOTES);
+var lastFile = loadStr(STORAGE_LAST);
+var cur = "الكل";
+var query = "";
+var sortMode = "default";
+
+function getSubjectIcon(sub) {
+  if (sub.indexOf("محاسبة") > -1) return "🧾";
+  if (sub.indexOf("اقتصاد") > -1) return "📈";
+  if (sub.indexOf("إدارة") > -1) return "💼";
+  return "📄";
+}
+
+function setGreeting() {
+  var h = new Date().getHours();
+  var text = "مساء الخير";
+  var emoji = "🌤️";
+  if (h >= 5 && h < 12) { text = "صباح الخير"; emoji = "☀️"; }
+  else if (h >= 12 && h < 18) { text = "مساء النور"; emoji = "📘"; }
+  else if (h >= 18) { text = "مساء الخير — وقت مذاكرة رايق"; emoji = "🌙"; }
+  document.getElementById("greetingPill").textContent = emoji + " " + text;
+}
+
+function loadArr(key) {
+  try {
+    var raw = JSON.parse(localStorage.getItem(key) || "[]");
+    return Array.isArray(raw) ? raw : [];
+  } catch (e) { return []; }
+}
+
+function saveArr(key, arr) {
+  try { localStorage.setItem(key, JSON.stringify(arr)); } catch (e) {}
+}
+
+function loadObj(key) {
+  try {
+    var raw = JSON.parse(localStorage.getItem(key) || "{}");
+    return (raw && typeof raw === "object") ? raw : {};
+  } catch (e) { return {}; }
+}
+
+function saveObj(key, obj) {
+  try { localStorage.setItem(key, JSON.stringify(obj)); } catch (e) {}
+}
+
+function loadStr(key) {
+  try { return localStorage.getItem(key) || ""; } catch (e) { return ""; }
+}
+
+function saveStr(key, val) {
+  try { localStorage.setItem(key, val); } catch (e) {}
+}
+
+function markLast(filePath) {
+  lastFile = filePath;
+  saveStr(STORAGE_LAST, filePath);
+  renderResumeBanner();
+}
+
+function renderResumeBanner() {
+  var banner = document.getElementById("resumeBanner");
+  var found = FILES.find(function (f) { return f.file === lastFile; });
+  if (!found) {
+    banner.classList.remove("show");
+    return;
+  }
+  document.getElementById("resumeTitle").textContent = found.title + " (" + found.subject + ")";
+  document.getElementById("resumeBtn").onclick = function () { openPreview(found); };
+  banner.classList.add("show");
+}
+
+function renderGlobalStats() {
+  var total = FILES.length;
+  var doneCount = FILES.filter(function (f) { return done.indexOf(f.file) > -1; }).length;
+  var favCount = FILES.filter(function (f) { return favs.indexOf(f.file) > -1; }).length;
+  var allPct = total ? Math.round((doneCount / total) * 100) : 0;
+
+  document.getElementById("statsRow").innerHTML =
+    '<span class="stat-chip">📂 إجمالي الملفات: ' + total + '</span>' +
+    '<span class="stat-chip">✅ الإنجاز الكلي: ' + allPct + '%</span>' +
+    '<span class="stat-chip">★ المفضلة: ' + favCount + '</span>';
+}
+
+function showToast(msg) {
+  var el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(function () {
+    el.classList.remove("show");
+  }, 2200);
+}
+
+function toggleItem(arr, key, storageKey, onMsg, offMsg) {
+  var idx = arr.indexOf(key);
+  if (idx > -1) {
+    arr.splice(idx, 1);
+    saveArr(storageKey, arr);
+    showToast(offMsg);
+  } else {
+    arr.push(key);
+    saveArr(storageKey, arr);
+    showToast(onMsg);
+  }
+  markLast(key);
+  render();
+}
+
+function editNote(item) {
+  var currentNote = notes[item.file] || "";
+  var next = prompt("اكتب ملاحظة سريعة للملف: " + item.title, currentNote);
+  if (next === null) return;
+  var trimmed = next.trim();
+  if (trimmed) {
+    notes[item.file] = trimmed;
+    showToast("تم حفظ الملاحظة ✓");
+  } else {
+    delete notes[item.file];
+    showToast("تم حذف الملاحظة");
+  }
+  saveObj(STORAGE_NOTES, notes);
+  markLast(item.file);
+  render();
+}
+
+function openPreview(item) {
+  markLast(item.file);
+  var modal = document.getElementById("pdfModal");
+  var encodedUrl = encodeURI(item.file);
+  document.getElementById("modalTitle").textContent = item.title + " — " + item.subject;
+  document.getElementById("modalNewTab").href = encodedUrl;
+  document.getElementById("modalDownload").href = encodedUrl;
+  document.getElementById("pdfFrame").src = encodedUrl;
+  modal.classList.add("open");
+}
+
+function closePreview() {
+  var modal = document.getElementById("pdfModal");
+  modal.classList.remove("open");
+  document.getElementById("pdfFrame").src = "";
+}
+
+document.getElementById("modalClose").addEventListener("click", closePreview);
+document.getElementById("pdfModal").addEventListener("click", function (e) {
+  if (e.target === this) closePreview();
+});
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") closePreview();
+  if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+    e.preventDefault();
+    document.getElementById("search").focus();
+  }
+});
+
+document.getElementById("search").addEventListener("input", function (e) {
+  query = e.target.value.trim().toLowerCase();
+  document.getElementById("clearSearch").classList.toggle("show", query.length > 0);
+  render();
+});
+
+document.getElementById("clearSearch").addEventListener("click", function () {
+  var inp = document.getElementById("search");
+  inp.value = "";
+  query = "";
+  document.getElementById("clearSearch").classList.remove("show");
+  inp.focus();
+  render();
+});
+
+document.getElementById("sortSelect").addEventListener("change", function (e) {
+  sortMode = e.target.value;
+  render();
+});
+
+document.getElementById("shareBtn").addEventListener("click", function () {
+  var url = window.location.href;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function () {
+      showToast("تم نسخ رابط المكتبة بنجاح ✓");
+    }).catch(function () { showToast(url); });
+  } else {
+    showToast(url);
+  }
+});
+
+function render() {
+  renderGlobalStats();
+  renderResumeBanner();
+
+  var subs = [];
+  FILES.forEach(function (f) {
+    if (subs.indexOf(f.subject) < 0) subs.push(f.subject);
+  });
+
+  var tabList = ["الكل", "المفضلة"].concat(subs);
+  var t = document.getElementById("tabs");
+  t.textContent = "";
+
+  tabList.forEach(function (s) {
+    var count = 0;
+    if (s === "الكل") count = FILES.length;
+    else if (s === "المفضلة") count = FILES.filter(function (f) { return favs.indexOf(f.file) > -1; }).length;
+    else count = FILES.filter(function (f) { return f.subject === s; }).length;
+
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "tab" + (s === cur ? " on" : "");
+    b.textContent = (s === "المفضلة" ? "★ " : "") + s + " (" + count + ")";
+    b.onclick = function () { cur = s; render(); };
+    t.appendChild(b);
+  });
+
+  var filtered = FILES.filter(function (f) {
+    var matchTab =
+      cur === "الكل" ||
+      (cur === "المفضلة" && favs.indexOf(f.file) > -1) ||
+      f.subject === cur;
+
+    var noteTxt = (notes[f.file] || "").toLowerCase();
+    var matchQuery = !query ||
+      f.title.toLowerCase().indexOf(query) > -1 ||
+      f.subject.toLowerCase().indexOf(query) > -1 ||
+      noteTxt.indexOf(query) > -1;
+
+    return matchTab && matchQuery;
+  });
+
+  var sorted = filtered.slice().sort(function (a, b) {
+    if (sortMode === "title") {
+      return a.title.localeCompare(b.title, undefined, { sensitivity: "base" });
+    }
+    if (sortMode === "undone") {
+      var aDone = done.indexOf(a.file) > -1 ? 1 : 0;
+      var bDone = done.indexOf(b.file) > -1 ? 1 : 0;
+      return aDone - bDone;
+    }
+    return 0;
+  });
+
+  var totalInView = sorted.length;
+  var doneInView = sorted.filter(function (f) { return done.indexOf(f.file) > -1; }).length;
+  var pct = totalInView ? Math.round((doneInView / totalInView) * 100) : 0;
+
+  document.getElementById("current-label").textContent = "القسم: " + cur;
+  document.getElementById("progress-text").textContent = "تمت مذاكرته: " + doneInView + " من " + totalInView + " (" + pct + "%)";
+  document.getElementById("count-label").textContent = totalInView + (totalInView === 1 || totalInView > 10 ? " ملف" : " ملفات");
+  document.getElementById("progressFill").style.width = pct + "%";
+
+  var l = document.getElementById("list");
+  l.textContent = "";
+
+  if (!sorted.length) {
+    var emptyMsg = cur === "المفضلة"
+      ? "مفيش ملفات في المفضلة لسه؛ دوس على ☆ في أي ملف يهمك."
+      : "لا توجد ملفات مطابقة لبحثك حالياً 😕";
+    l.innerHTML = '<div class="empty">' + emptyMsg + '</div>';
+    return;
+  }
+
+  sorted.forEach(function (f) {
+    var isFav = favs.indexOf(f.file) > -1;
+    var isDone = done.indexOf(f.file) > -1;
+    var noteText = notes[f.file] || "";
+    var encoded = encodeURI(f.file);
+
+    var card = document.createElement("div");
+    card.className = "card" + (isDone ? " done" : "");
+
+    var top = document.createElement("div");
+    top.className = "card-top";
+
+    var left = document.createElement("div");
+    left.className = "card-left";
+
+    var icon = document.createElement("div");
+    icon.className = "subj-icon";
+    icon.textContent = getSubjectIcon(f.subject);
+
+    var info = document.createElement("div");
+    info.className = "card-info";
+
+    var title = document.createElement("div");
+    title.className = "card-title";
+    title.textContent = f.title;
+
+    var badges = document.createElement("div");
+    badges.className = "badges";
+
+    var subBadge = document.createElement("span");
+    subBadge.className = "badge";
+    subBadge.textContent = f.subject;
+    badges.appendChild(subBadge);
+
+    if (isDone) {
+      var doneBadge = document.createElement("span");
+      doneBadge.className = "badge done-tag";
+      doneBadge.textContent = "✓ تمت المذاكرة";
+      badges.appendChild(doneBadge);
+    }
+
+    if (noteText) {
+      var noteBadge = document.createElement("span");
+      noteBadge.className = "badge note-tag";
+      noteBadge.textContent = "📝 ملاحظة";
+      badges.appendChild(noteBadge);
+    }
+
+    info.appendChild(title);
+    info.appendChild(badges);
+    left.appendChild(icon);
+    left.appendChild(info);
+
+    var actions = document.createElement("div");
+    actions.className = "icon-actions";
+
+    var noteBtn = document.createElement("button");
+    noteBtn.type = "button";
+    noteBtn.className = "icon-btn nt" + (noteText ? " on" : "");
+    noteBtn.title = "إضافة أو تعديل ملاحظة";
+    noteBtn.textContent = "📝";
+    noteBtn.onclick = function () { editNote(f); };
+
+    var favBtn = document.createElement("button");
+    favBtn.type = "button";
+    favBtn.className = "icon-btn fav" + (isFav ? " on" : "");
+    favBtn.title = isFav ? "إزالة من المفضلة" : "إضافة للمفضلة";
+    favBtn.textContent = isFav ? "★" : "☆";
+    favBtn.onclick = function () {
+      toggleItem(favs, f.file, STORAGE_FAV, "تمت الإضافة للمفضلة ★", "تمت الإزالة من المفضلة");
+    };
+
+    var chkBtn = document.createElement("button");
+    chkBtn.type = "button";
+    chkBtn.className = "icon-btn chk" + (isDone ? " on" : "");
+    chkBtn.title = isDone ? "تحديد كغير مذاكر" : "تحديد كتمت مذاكرته";
+    chkBtn.textContent = "✓";
+    chkBtn.onclick = function () {
+      toggleItem(done, f.file, STORAGE_DONE, "عاش! تم تحديد الملف كـ (تمت المذاكرة)", "تم إلغاء تحديد المذاكرة");
+    };
+
+    actions.appendChild(noteBtn);
+    actions.appendChild(favBtn);
+    actions.appendChild(chkBtn);
+
+    top.appendChild(left);
+    top.appendChild(actions);
+
+    card.appendChild(top);
+
+    if (noteText) {
+      var nBox = document.createElement("div");
+      nBox.className = "note-preview";
+      nBox.textContent = "ملاحظتك: " + noteText;
+      card.appendChild(nBox);
+    }
+
+    var foot = document.createElement("div");
+    foot.className = "card-foot";
+
+    var prevBtn = document.createElement("button");
+    prevBtn.type = "button";
+    prevBtn.className = "act-btn preview";
+    prevBtn.textContent = "👁 معاينة هنا";
+    prevBtn.onclick = function () { openPreview(f); };
+
+    var extLink = document.createElement("a");
+    extLink.className = "act-btn ext";
+    extLink.href = encoded;
+    extLink.target = "_blank";
+    extLink.rel = "noopener";
+    extLink.textContent = "فتح / تحميل ↗";
+    extLink.onclick = function () { markLast(f.file); };
+
+    foot.appendChild(prevBtn);
+    foot.appendChild(extLink);
+
+    card.appendChild(foot);
+    l.appendChild(card);
+  });
+}
+
+setGreeting();
+render();
+</script>
+</body>
+</html>
