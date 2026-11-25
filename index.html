@@ -778,7 +778,12 @@ footer {
     <iframe id="pdfFrame" class="modal-frame" title="معاينة PDF"></iframe>
   </div>
 </div>
-
+<nav class="bottom-nav" id="bottomNav">
+  <button type="button" data-nav="home" class="on"><span>🏠</span>الرئيسية</button>
+  <button type="button" data-nav="search"><span>🔍</span>بحث</button>
+  <button type="button" data-nav="favs"><span>★</span>المفضلة</button>
+  <button type="button" data-nav="undone"><span>📖</span>للمذاكرة</button>
+</nav>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -1194,6 +1199,53 @@ function render() {
 
 setGreeting();
 render();
+  var STORAGE_THEME = "bis_theme";
+var themeBtn = document.getElementById("themeBtn");
+function curTheme() {
+  return document.documentElement.getAttribute("data-theme") ||
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+}
+function syncThemeBtn() {
+  themeBtn.textContent = curTheme() === "dark" ? "☀️ فاتح" : "🌙 داكن";
+}
+themeBtn.addEventListener("click", function () {
+  var next = curTheme() === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  saveStr(STORAGE_THEME, next);
+  syncThemeBtn();
+});
+syncThemeBtn();
+
+var gridEl = document.getElementById("list");
+gridEl.classList.add("enter");
+setTimeout(function () { gridEl.classList.remove("enter"); }, 1200);
+
+var navBtns = document.querySelectorAll("#bottomNav button");
+navBtns.forEach(function (b) {
+  b.addEventListener("click", function () {
+    var a = b.getAttribute("data-nav");
+    var inp = document.getElementById("search");
+    var sel = document.getElementById("sortSelect");
+    navBtns.forEach(function (x) { x.classList.remove("on"); });
+    b.classList.add("on");
+    if (a === "home") {
+      cur = "الكل"; query = ""; sortMode = "default";
+      inp.value = ""; sel.value = "default";
+      document.getElementById("clearSearch").classList.remove("show");
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (a === "search") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(function () { inp.focus(); }, 350);
+    } else if (a === "favs") {
+      cur = "المفضلة"; render();
+      document.getElementById("tabs").scrollIntoView({ behavior: "smooth" });
+    } else if (a === "undone") {
+      cur = "الكل"; sortMode = "undone"; sel.value = "undone"; render();
+      document.getElementById("tabs").scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
 </script>
 </body>
 </html>
